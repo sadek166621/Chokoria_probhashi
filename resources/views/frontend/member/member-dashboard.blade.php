@@ -471,92 +471,80 @@
                                 <div class="billing_title">
                                     <h2>Personal Information</h2>
                                 </div>
-
+                                <form action="{{ route('update-member-info-dash', $member->id) }}"method="post" enctype="multipart/form-data">
+                                    @csrf
                                 <div class="row donate-now__personal-info">
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Name:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->name }}</p>
+                                            <input type="text" placeholder="Name" class="form-control" name="name" required @isset($member) value="{{ $member->name }}" @endisset>
                                         </div>
                                     </div>
-                                    @if ($member->father_name !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Father Name:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->father_name }}</p>
+                                            <input type="text" placeholder="Your Father Name" class="form-control" name="father_name" @isset($member) value="{{ $member->father_name }}" @endisset>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->mother_name !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Mother Name:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->mother_name }}</p>
+                                        <input type="text" placeholder="Your Mother Name" class="form-control" name="mother_name"@isset($member) value="{{ $member->mother_name }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->date_of_birth !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Date of Birth </p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->date_of_birth }}</p>
+                                            <input type="text" placeholder="Date of Birth" class="form-control" name="date_of_birth" id="datepicker"@isset($member) value="{{ $member->date_of_birth }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->gender !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Gender:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->gender }}</p>
+                                            <input type="text" placeholder="gender" class="form-control" name="gender" id="datepicker"@isset($member) value="{{ $member->gender }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->blood_group !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Blood Group:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->blood_group }}</p>
+                                            <input type="text" placeholder="Blood Group" class="form-control" name="blood_group" id="datepicker"@isset($member) value="{{ $member->blood_group }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->religion !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Religion:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->religion }}</p>
+                                            <input type="text" placeholder="Religion" class="form-control" name="religion" id="datepicker"@isset($member) value="{{ $member->religion }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
-                                    @if ($member->country_name !=null)
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Nationality:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->country_name }}</p>
+                                            <input type="text" placeholder="Country Name" class="form-control" name="country_name" id="datepicker"@isset($member) value="{{ $member->country_name }}" @endisset >
                                         </div>
                                     </div>
-                                    @endif
                                     <div class="row">
                                         <div class="col-xl-6">
                                             <p>Personal Phone No:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->phone }}</p>
+                                            <input type="text" placeholder="Phone" name="phone" class="form-control" id="datepicker"@isset($member) value="{{ $member->phone }}" @endisset >
+
                                         </div>
                                     </div>
                                     <div class="row">
@@ -564,7 +552,7 @@
                                             <p>Email:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->email }}</p>
+                                            <input type="text" placeholder="Email" name="email" class="form-control" id="datepicker"@isset($member) value="{{ $member->email }}" @endisset >
                                         </div>
                                     </div>
                                     <div class="row">
@@ -572,10 +560,25 @@
                                             <p>Permanent Address:</p>
                                         </div>
                                         <div class="col-xl-6 ">
-                                            <p>{{ $member->address }}</p>
+                                            <input type="text" placeholder="Permanent Address" class="form-control" name="address" id="datepicker"@isset($member) value="{{ $member->address }}" @endisset >
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 7px;">
+                                        <div class="col-xl-6">
+                                            <p>Image:</p>
+                                        </div>
+                                        <div class="col-xl-6 ">
+                                            <img src="{{ asset('assets') }}/images/uploads/members/{{ $member->image }}" height="50" width="50" alt="">
+                                            <input class="form-control" type="file" name="image">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xl-12">
+                                    <div class="card-footer" style="margin-top: 15px;">
+                                        <button type="submit" class="btn btn-primary float-left">Submit</button>
+                                    </div>
+                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- Personal Information End -->
@@ -618,7 +621,11 @@
                             aria-labelledby="headingFive" data-bs-parent="#accordionExample" style="padding: 27px 15px 13px;">
                             <div class="billing_details">
                                 <div class="billing_title">
+                                    @if ($member->certificate_status ==1)
                                     <h2><a href="{{ route('member-certificate-generate', $member->id) }}">Click Here For Download Your Certificate</a></h2>
+                                    @else
+                                    <h2> Certificate Not Genarate Yet! </h2>
+                                    @endif
                                 </div>
                             </div>
                         </div>

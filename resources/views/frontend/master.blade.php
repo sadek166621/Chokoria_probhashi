@@ -107,11 +107,11 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="#">admincps@gmail.com</a>
+                    <a href="#">chakariaprobashisociety@gmail.com</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="#">+88 01700-000000</a>
+                    <a href="#">+971554681115</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">

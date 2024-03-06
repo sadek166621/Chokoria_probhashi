@@ -8,12 +8,13 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__about-logo">
-                            <a href="index.html"><img class="logo" src="{{asset('assets-frontend')}}/assets/images/resources/logo.png"
+                            <a href="{{ route('home') }}"><img class="logo" src="{{asset('assets-frontend')}}/assets/images/resources/logo.png"
                                     alt=""></a>
                         </div>
                         <div class="footer-widget__about-text-box">
-                            <p class="footer-widget__about-text">Nulla ultricies justo sit amet ante efficitur,
-                                eget pharetra augue efficitur. Vestibulum viverra, dolor sit amet ultricies.</p>
+                            <p class="footer-widget__about-text">Chokoria Probashi Society <br>
+                                অরাজনৈতিক ও প্রবাসী সেবামূলক সংগঠন
+                                </p>
                         </div>
 
                     </div>
@@ -23,7 +24,7 @@
                         <h3 class="footer-widget__title">Links</h3>
                         <ul class="footer-widget__links-list list-unstyled clearfix">
                             <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                             <li><a href="#">Notice</a></li>
                             <li><a href="#">Events</a></li>
                         </ul>
@@ -63,7 +64,7 @@
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
                                 <div class="text">
-                                    <p><a href="#">+88 01700-000000</a></p>
+                                    <p><a href="#">+971554681115</a></p>
                                 </div>
                             </li>
                         </ul>

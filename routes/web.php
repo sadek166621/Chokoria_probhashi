@@ -145,6 +145,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
             Route::post('/update/{id}', [StaffmettingController::class, 'update'])->name('update');
             Route::get('/delete/{id}', [StaffmettingController::class, 'destroy'])->name('delete');
         });
+
         Route::group(['as' => 'member.', 'prefix' => 'member'], function () {
             Route::get('/list', [MemberController::class, 'index'])->name('list');
             Route::get('/add', [MemberController::class, 'create'])->name('add');
@@ -156,6 +157,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
             Route::post('/update/{id}', [MemberController::class, 'update'])->name('update');
             Route::post('/inactive-member-update/{id}', [MemberController::class, 'inactivememberupdate'])->name('inactive-member-update');
             Route::get('/delete/{id}', [MemberController::class, 'destroy'])->name('delete');
+            Route::post('/serial', [MemberController::class, 'checkSerial'])->name('serial');
         });
 
         Route::group(['as' => 'certificate.', 'prefix' => 'certificate'], function () {
@@ -323,7 +325,10 @@ Route::get('/member-list', [PagesController::class, 'memberlist'])->name('member
 Route::get('/view-member-details/{id}', [PagesController::class, 'viewmemberdetails'])->name('view-member-details');
 Route::get('/member-login', [PagesController::class, 'memberlogin'])->name('member-login');
 Route::post('/member-submit', [PagesController::class, 'membersubmit'])->name('member-submit');
+Route::post('/update-member-info-dash/{id}', [PagesController::class, 'updatememberinfodash'])->name('update-member-info-dash');
+
 Route::get('/member-dashboard', [PagesController::class, 'memberdashboard'])->name('member-dashboard');
 // Route::get('/view-member', [PagesController::class, 'viewmember'])->name('view-member');
 Route::get('/executive-list', [PagesController::class, 'executivedashboard'])->name('executive-dashboard');
-Route::get('member-certificate-generate/{id}', [PagesController::class, 'membercertificategenerate'])->name('member-certificate-generate');
+Route::get('member-certificate-generate/{id}', [MemberController::class, 'membercertificategenerate'])->name('member-certificate-generate');
+

@@ -36,6 +36,12 @@
             method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Serial</label>
+                <input type="text" class="form-control" id="serialNumber" name="serial" @isset($member) value="{{ $member->serial }}" @endisset>
+                <strong id="error-message" style="color: red;"></strong>
+            </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter title" @isset($member) value="{{ $member->name }}" @endisset required>
@@ -44,7 +50,7 @@
                 <div class="col-sm-6" style="float: left">
                   <div class="form-group">
                     <label for="location_id">Country</label>
-                    <select class="form-control" name="country_name"  required>
+                    <select class="form-control" name="country_name" >
                       <option value="">--Select Country--</option>
                       @foreach ($countries as $country)
                         @isset($member)
@@ -73,7 +79,7 @@
                 <div class="col-sm-6" style="float: left">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Phone</label>
-                    <input type="number" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter phone no" @isset($member) value="{{ $member->phone }}" @endisset required>
+                    <input type="number" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter phone no" @isset($member) value="{{ $member->phone }}" @endisset >
                   </div>
                 </div>
               </div>
@@ -84,7 +90,7 @@
                         <label for="exampleInputFile">@isset($member) Change member Image @else Choose member Image @endisset</label>
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" name="image" class="form-control" @isset($member) @else required @endisset>
+                            <input type="file" name="image" class="form-control" @isset($member) @else  @endisset>
                           </div>
                         </div>
                       </div>
@@ -131,3 +137,56 @@
 </section>
 <!-- /.content -->
 @endsection
+@push('js')
+<script>
+    function delay(callback, ms){
+        var timer = 0;
+        return function(){
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    function checkSerial() {
+        var serialNumber = $("#serialNumber").val();
+
+        $.ajax({
+            url: '{{ route("admin.member.serial") }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                serialNumber: serialNumber
+            },
+            success: function(response) {
+                if (response.exists) {
+                    $("#error-message").text("Serial number already exists!");
+                    $("#submitBtn").prop("disabled", true);
+                } else {
+                    $("#error-message").text("");
+                    $("#submitBtn").prop("disabled", false);
+                }
+            },
+            error: function() {
+                console.log("Error checking serial number");
+            }
+        });
+    }
+
+    $("#serialNumber").on("input", delay(function() {
+        var serialNumber = $("#serialNumber").val();
+        if (serialNumber.trim() === "") {
+            $("#error-message").text(""); // Clear the error message when input is empty
+            $("#submitBtn").prop("disabled", true); // Disable submit button when input is empty
+        } else {
+            checkSerial();
+        }
+    }, 50));
+
+    // Disable the submit button initially
+    $("#submitBtn").prop("disabled", true);
+    </script>
+
+@endpush

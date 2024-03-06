@@ -72,7 +72,7 @@
                             @endphp
                         <div class="become-volunteer__call-content">
                             <span>Call Anytime</span>
-                            <p><a href="tel:01700-000000">{{ $setting->site_contact_no }}</a></p>
+                            <p><a href="tel:+971554681115">+971554681115</a></p>
                         </div>
                     </div>
                 </div>

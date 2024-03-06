@@ -47,7 +47,7 @@
             <table id="myTable" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>SL</th>
+                  <th>Serial:</th>
                   <th>Name</th>
                   <th>Country</th>
                   <th>Join Date</th>
@@ -62,7 +62,7 @@
                 @if (count($members) > 0)
                   @foreach ($members as $key => $member)
                     <tr>
-                      <td>{{ $key+1 }}</td>
+                      <td>{{ $member->serial }}</td>
                       <td>{{ $member->name }}</td>
                       <td>{{ $member->country_name}}</td>
                       <td>{{ $member->join_date }}</td>

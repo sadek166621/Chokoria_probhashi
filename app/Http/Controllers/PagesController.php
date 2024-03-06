@@ -376,6 +376,82 @@ class PagesController extends Controller
 
         return back();
     }
+
+    public function updatememberinfodash(Request $request, $id){
+        // return $request;
+        $member = Member::findOrFail($id);
+
+        if($member){
+            $validated = $request->validate([
+                'name' => 'required',
+            ]);
+
+            if (!$request->status || $request->status == NULL) {
+                $request->status = 0;
+            } else {
+                $request->status = 1;
+            }
+
+            $target_image = $member->image;
+            $image = $request->file('image');
+            if($image){
+                $currentDate = Carbon::now()->toDateString();
+                //dd($image->getClientOriginalExtension());
+
+                $imageName = $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+                if (!file_exists('assets/images/uploads/members')) {
+                    mkdir('assets/images/uploads/members', 0777, true);
+                }
+
+                $image->move(public_path('assets/images/uploads/members'), $imageName);
+                // $image->move(base_path().'/assets/images/uploads/members', $imageName);
+
+                $target_image = $imageName;
+            }
+
+            if(strcmp($member->name, $request->name) == 0) {
+                $username = $member->username;
+            }else{
+                $username = Str::slug($request->name).Str::random(6);
+            }
+
+            $member->update([
+                'serial' => $request->serial,
+                'name' => $request->name,
+                'username' => Str::slug($request->name).Str::random(6),
+                'father_name' => $request->father_name,
+                'mother_name' => $request->mother_name,
+                'nominee_name' => $request->nominee_name,
+                'relation' => $request->relation,
+                'blood_group' => $request->blood_group,
+                'country_name' => $request->nationality,
+                'date_of_birth' => $request->date_of_birth,
+                'religion' => $request->religion,
+                'gender' => $request->gender,
+                'passport_no' => $request->passport_no,
+                'nid' => $request->nid,
+                'e_nid' => $request->e_nid,
+                'phone' => $request->phone,
+                'family_phone' => $request->family_phone,
+                'whatsapp_number' => $request->whatsapp_number,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'permanent_a_village' => $request->permanent_a_village,
+                'permanent_word_no' => $request->permanent_word_no,
+                'permanent_union' => $request->permanent_union,
+                'permanent_upazila' => $request->permanent_upazila,
+                'address' => $request->address,
+                'image' => $target_image,
+            ]);
+
+            Toastr::success('member updated successfully!', 'Success', ["positionClass" => "toast-top-right"]);
+
+            return redirect()->route('member-dashboard');
+        }
+
+        return back();
+    }
     public function memberlist(){
        $data['members'] = Member::where('location_id',2)->latest()->get();
         return view('frontend.member.member-list',$data);
@@ -404,7 +480,7 @@ class PagesController extends Controller
             }
             else{
                 Auth::logout();
-                    Toastr::error(' Incorrect', 'Error', ["positionClass" => "toast-top-right"]);
+                    Toastr::error(' Plese Wait For Admin Approvement', 'Error', ["positionClass" => "toast-top-right"]);
                     return back();
               }
 

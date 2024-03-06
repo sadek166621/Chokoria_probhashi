@@ -77,7 +77,7 @@
                     </div>
                     <div class="contact-one__content">
                         <p class="contact-one__sub-title">Helpline</p>
-                        <h3 class="contact-one__number"><a href="#">+88 01700-000000</a></h3>
+                        <h3 class="contact-one__number"><a href="tel:+971554681115">+971554681115</a></h3>
                     </div>
                 </li>
                 <li class="contact-one__single">
@@ -87,7 +87,7 @@
                     <div class="contact-one__content">
                         <p class="contact-one__sub-title">Send email</p>
                         <h3 class="contact-one__number"><a
-                                href="#">admincpc@gmail.com</a></h3>
+                                href="#">chakariaprobashisociety@gmail.com</a></h3>
                     </div>
                 </li>
                 <li class="contact-one__single">
@@ -95,8 +95,9 @@
                         <span class="icon-location"></span>
                     </div>
                     <div class="contact-one__content">
-                        <p class="contact-one__sub-title">380 St Kilda Road</p>
-                        <h3 class="contact-one__number">Mohammodpur, Dhaka-1207</h3>
+                        <p class="contact-one__number"> চকরিয়া সিটি সেন্টার, ১৫ নং (৩য় তলা),</p>
+                        <h3 class="contact-one__number">
+                             ৮ নং ওয়ার্ড, চকরিয়া পৌরসভা, চকরিয়া, কক্সবাজার ।</h3>
                     </div>
                 </li>
             </ul>
@@ -108,7 +109,7 @@
 <!--Google Map Start-->
 <section class="google-map google-map-two">
     <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237676.11623191615!2d91.67673729453128!3d21.441453400000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30adc80ce9079a33%3A0xfbe8a541138f499e!2z4KaV4KaV4KeN4Ka4IOCmuOCmv-Cmn-CmvyDgprjgp4fgpqjgp43gpp_gpr7gprA!5e0!3m2!1sbn!2sbd!4v1709726282353!5m2!1sbn!2sbd"
         class="google-map__one" allowfullscreen></iframe>
 
 </section>
